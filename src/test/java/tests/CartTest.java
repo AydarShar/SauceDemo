@@ -18,7 +18,7 @@ public class CartTest extends BaseTest {
     public void addBackpackToCartTest() {
         loginPage.open();
         loginPage.login("standard_user", "secret_sauce");
-        productsPage.addBackpackToCart();
+        productsPage.addToCart("Sauce Labs Backpack");
         productsPage.goToCart();
         assertEquals(cartPage.getItemName(), "Sauce Labs Backpack");
         assertEquals(cartPage.getItemPrice(), "$29.99");

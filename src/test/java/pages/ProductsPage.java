@@ -6,8 +6,10 @@ import org.openqa.selenium.WebDriver;
 public class ProductsPage extends BasePage {
 
     private final By TITLE = By.className("title");
-    private final By ADD_BACKPACK_TO_CART_BUTTON = By.id("add-to-cart-sauce-labs-backpack");
-    private final By FIRST_ITEM_TITLE = By.xpath("//*[@class=\"inventory_list\"]/div[@class='inventory_item'][1]//div[@data-test='inventory-item-name']");
+    private final String ADD_BACKPACK_TO_CART_PATTERN = "//div[text()=\"%s\"]/ancestor::" +
+            "div[@data-test='inventory-item']//button[text()='Add to cart']";
+    private final By FIRST_ITEM_TITLE = By.xpath("//*[@class=\"inventory_list\"]/div[@class='inventory_item'][1]" +
+            "//div[@data-test='inventory-item-name']");
     private final By FILTER_NAME_A_TO_Z = By.xpath("//select/option[1]");
     private final By FILTER_NAME_Z_TO_A = By.xpath("//select/option[2]");
     private final By FILTER_PRICE_LOW_TO_HIGH = By.xpath("//select/option[3]");
@@ -46,8 +48,8 @@ public class ProductsPage extends BasePage {
         return driver.findElement(FIRST_ITEM_TITLE).getText();
     }
 
-    public void addBackpackToCart() {
-        driver.findElement(ADD_BACKPACK_TO_CART_BUTTON).click();
+    public void addToCart(String product) {
+        driver.findElement(By.xpath(String.format(ADD_BACKPACK_TO_CART_PATTERN, product))).click();
     }
 
     public void goToCart() {
