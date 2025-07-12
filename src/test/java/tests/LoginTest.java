@@ -1,5 +1,6 @@
 package tests;
 
+import io.qameta.allure.*;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -21,6 +22,8 @@ public class LoginTest extends BaseTest {
             description = "Вход с неверными данными, проверка сообщения об ошибке",
             testName = "Негативный тест на аутентификацию",
             dependsOnMethods = "checkLogin")
+
+    @Description("Проверка входа в магазин с неверным логином/паролем")
     public void checkLoginWithNegativeValues(String username, String password, String expectedMessage) {
         loginPage.open();
         loginPage.login(username, password);
@@ -33,6 +36,15 @@ public class LoginTest extends BaseTest {
             description = "Вход с корректными данными",
             testName = "Успешная аутентификация",
             groups = {"smoke"})
+    @Severity(SeverityLevel.CRITICAL)
+    @Owner("Sharafetdin A.V.")
+    @Link("https://www.saucedemo.com/")
+    @Epic("Login Page")
+    @Feature("Log in")
+    @Story("Login with correct credits")
+    @TmsLink("ITM-1")
+    @Issue("ITM-1-1")
+    @Description("Проверка входа в магазин с корректным логином/паролем")
     public void checkLogin() {
         loginPage.open();
         loginPage.login("standard_user", "secret_sauce");

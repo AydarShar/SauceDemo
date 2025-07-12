@@ -1,5 +1,6 @@
 package tests;
 
+import io.qameta.allure.Description;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -12,6 +13,7 @@ import java.util.HashMap;
 public class LocatorsTest {
 
     @Test(description = "Разновидности локаторов", testName = "Локаторы")
+    @Description("Проверка разнообразных локаторов")
     public void locatorsTest() {
         ChromeOptions options = new ChromeOptions();
         HashMap<String, Object> chromePrefs = new HashMap<>();
