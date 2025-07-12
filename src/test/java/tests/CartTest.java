@@ -6,7 +6,10 @@ import static org.testng.Assert.assertEquals;
 
 public class CartTest extends BaseTest {
 
-    @Test
+    @Test(priority = 1,
+            description = "Проверка перехода на страницу корзины со страницы продуктов",
+            testName = "Переход на страницу корзины",
+            groups = {"smoke"})
     public void cartTest() {
         loginPage.open();
         loginPage.login("standard_user", "secret_sauce");
@@ -14,7 +17,10 @@ public class CartTest extends BaseTest {
         assertEquals(driver.getCurrentUrl(), "https://www.saucedemo.com/cart.html");
     }
 
-    @Test
+    @Test(priority = 2,
+            description = "Проверка добавления рюкзака в корзину",
+            testName = "Добавление рюкзака в корзину",
+            dependsOnMethods = "cartTest")
     public void addBackpackToCartTest() {
         loginPage.open();
         loginPage.login("standard_user", "secret_sauce");
